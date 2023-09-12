@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+  migrate  = false
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement()) @map(name: "id")
+  topic     String   @map(name: "topic")
+  message   String   @map(name: "message")
+  createdAt DateTime @default(now()) @map(name: "created_at")
+}
